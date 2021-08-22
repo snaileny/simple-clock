@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body {
+
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: #16161d;
+
+        }
+
+        p {
+
+            margin: 0.4em 0;
+            padding: 0;
+
+        }
+
+        .wrapper {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 6em;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: xx-large;
+            color: white;
+
+        }
+    </style>
+    <script>
+        function askName() {
+
+            let name = prompt("What is your name?");
+            let nameElement = document.querySelector("#name");
+            nameElement.innerText = name;
+
+        }
+
+        function getTime() {
+
+            let time = new Date();
+            let currentTime = time.toLocaleTimeString("tr-TR");
+            let currentDay = time.getDay();
+
+            switch(currentDay) {
+
+                case 0:
+                    currentDay = "Pazar";
+                    break;
+
+                case 1:
+                    currentDay = "Pazartesi";
+                    break;
+
+                case 2:
+                    currentDay = "Salı";
+                    break;
+
+                case 3:
+                    currentDay = "Çarşamba";
+                    break;
+
+                case 4:
+                    currentDay = "Perşembe";
+                    break;
+
+                case 5:
+                    currentDay = "Cuma";
+                    break;
+
+                case 6:
+                    currentDay = "Cumartesi"
+                    break;
+
+            }
+
+            let clock = currentTime + " " + currentDay;
+            document.querySelector("#clock").innerHTML = clock;
+
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            askName();
+            setInterval(getTime, 1000);
+
+        })
+    </script>
+    <title>Simple Clock</title>
+</head>
+<body>
+    <div class="wrapper">
+        <p>Hello, <span id="name"></span>! The time is:</p>
+        <p id="clock"></p>
+    </div>
+</body>
+</html>
